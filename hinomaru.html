@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="twitter:card" content="summary">
+ <meta name="twitter:site" content="@Juxta_Crucem">
+ <meta name="twitter:title" content="日本の国旗ゲーム！">
+ <title>日本の国旗ゲーム</title>
+ <link rel="stylesheet" href="hinomaru.css">
+</head>
+
+<body>
+ <div id="title">
+  <h1>日本の国旗ゲーム！</h1>
+  <p>赤い円の大きさを変えて正しい日本の国旗を作ろう！</p>
+ </div>
+ <br>
+ <div id="cv-game">
+  <canvas id="cv" width="360" height="240"></canvas>
+ </div>
+ <br>
+ <button id="small" class="button-game" onclick="smaller()">円を小さく</button>
+ <br><br>
+ <button id="large" class="button-game" onclick="bigger()">円を大きく</button>
+ <br><br>
+ <button id="done" class="button-done" onclick="result()">これでOK！</button>
+ <div id="score"></div>
+ <button id="restart" class="button-done" onclick="retry()">もういちど遊ぶ</button>
+ <div id="gotwitter"></div>
+<script>
+(document, 'script', 'twitter-wjs');
+  var cvs = document.getElementById("cv");
+var ctx = cvs.getContext("2d");
+function rewrite (x) {
+ctx.beginPath();
+ctx.fillStyle = "#FFFFFF";
+ctx.rect(0, 0, 360, 240);
+ctx.fill();
+ctx.beginPath();
+ctx.fillStyle = "#C22047";
+ctx.arc(180, 120, x * 0.72, 0, 2 * Math.PI, false);
+ctx.fill();
+}
+var radius = Math.floor( Math.random() * 101 ) + 50;
+var resulttext;
+var resultstr;
+score.style.display = "none";
+restart.style.display = "none";
+gotwitter.style.display = "none";
+rewrite (radius);
+
+function smaller() { 
+if (radius > 50) {radius = radius - 1 ;}
+rewrite (radius);
+}
+function bigger() {
+if (radius < 150) {radius = radius + 1 ;}
+rewrite (radius);
+}
+
+function result() {
+small.style.display = "none";
+large.style.display = "none";
+done.style.display = "none";
+restart.style.display = "block";
+score.style.display = "block";
+gotwitter.style.display = "block";
+resultstr = String(radius);
+if (radius == 100) {
+resulttext = "おめでとう！これは日本の国旗です！";
+}
+else if (radius < 110){
+if (radius >90){
+resulttext = "惜しい！日の丸の" + resultstr + "%の大きさです！";
+}
+resulttext = "残念。日の丸の" + resultstr + "%の大きさです。";
+}
+else {
+resulttext = "残念。日の丸の" + resultstr + "%の大きさです。";
+}
+document.getElementById("score").innerHTML = resulttext;
+}
+
+function retry() {
+small.style.display = "block";
+large.style.display = "block";
+done.style.display = "block";
+score.style.display = "none";
+restart.style.display = "none";
+gotwitter.style.display = "none";
+radius = Math.floor( Math.random() * 101 ) + 50;
+rewrite (radius);
+}
+
+function openTwitter() {
+ var url;
+ var tweet = "https://twitter.com/intent/tweet?text="+resulttext+"&url="+url+"&hashtags=日本の国旗ゲーム！";
+ window.open(tweet,'_blank');
+}
+
+<!-- <script src="hinomarugame.js"> --> </script>
+</body>
+</html>
