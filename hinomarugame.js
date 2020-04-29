@@ -37,16 +37,12 @@ score.style.display = "block";
 gotwitter.style.display = "block";
 
 resultstr = String(radius);
+resulttext = "残念。日の丸の" + resultstr + "%の大きさです。";
+if (radius < 110){ if (radius > 90){
+resulttext = "惜しい！日の丸の" + resultstr + "%の大きさです！";
+}}
 if (radius == 100) {
 resulttext = "おめでとう！これは日本の国旗です！";
-} else if (radius < 110){
-if (radius > 90){
-resulttext = "惜しい！日の丸の" + resultstr + "%の大きさです！";
-} else {
-resulttext = "残念。日の丸の" + resultstr + "%の大きさです。";
-}}
-else {
-resulttext = "残念。日の丸の" + resultstr + "%の大きさです。";
 }
 document.getElementById("score").innerHTML = resulttext;
 
