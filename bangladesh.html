@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="twitter:card" content="summary">
+ <meta name="twitter:site" content="@Juxta_Crucem">
+ <meta name="twitter:title" content="バングラデシュの国旗ゲーム！">
+ <title>日本の国旗ゲーム</title>
+ <link rel="stylesheet" href="bangladesh.css">
+</head>
+
+<body>
+ <div id="title">
+  <h1>バングラデシュの国旗ゲーム！</h1>
+  <p>赤い円を左右に動かして正しいバングラデシュの国旗を作ろう！</p>
+ </div>
+ <br>
+ <div id="cv-game">
+  <canvas id="cv" width="320" height="192"></canvas>
+ </div>
+ <br>
+ <button id="left" class="button-game" onclick="goleft()">円を左へ</button>
+ <br><br>
+ <button id="right" class="button-game" onclick="goright()">円を右へ</button>
+ <br><br>
+ <button id="done" class="button-done" onclick="result()">これでOK！</button>
+ <div id="score"></div>
+ <button id="restart" class="button-done" onclick="retry()">もういちど遊ぶ</button>
+ <br><br>
+ <div id="gotwitter"></div>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="bangladesh.js"> </script>
+</body>
+</html>
