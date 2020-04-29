@@ -59,7 +59,7 @@ resulttweet = "あなたの結果は…" + resulttext;
 anchor.setAttribute("data-text", resulttweet);
 anchor.setAttribute("data-url", "https://juxtacrucem.github.io/hinomaru.html");
 anchor.setAttribute("data-size", large);
-anchor.innerText = "Tweet #電源ボタンを押せ";
+anchor.innerText = "Tweet #にほんの国旗ゲーム";
 gotwitter.appendChild(anchor);
 
 var script = document.createElement("script");
