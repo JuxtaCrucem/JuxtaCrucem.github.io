@@ -17,7 +17,7 @@
  </div>
  <br>
  <div id="cv-game">
-  <canvas id="cv" width="360" height="240"></canvas>
+  <canvas id="cv" width="300" height="200"></canvas>
  </div>
  <br>
  <button id="small" class="button-game" onclick="smaller()">円を小さく</button>
@@ -27,78 +27,9 @@
  <button id="done" class="button-done" onclick="result()">これでOK！</button>
  <div id="score"></div>
  <button id="restart" class="button-done" onclick="retry()">もういちど遊ぶ</button>
+ <br><br>
  <div id="gotwitter"></div>
-<script>
-(document, 'script', 'twitter-wjs');
-  var cvs = document.getElementById("cv");
-var ctx = cvs.getContext("2d");
-function rewrite (x) {
-ctx.beginPath();
-ctx.fillStyle = "#FFFFFF";
-ctx.rect(0, 0, 360, 240);
-ctx.fill();
-ctx.beginPath();
-ctx.fillStyle = "#C22047";
-ctx.arc(180, 120, x * 0.72, 0, 2 * Math.PI, false);
-ctx.fill();
-}
-var radius = Math.floor( Math.random() * 101 ) + 50;
-var resulttext;
-var resultstr;
-score.style.display = "none";
-restart.style.display = "none";
-gotwitter.style.display = "none";
-rewrite (radius);
-
-function smaller() { 
-if (radius > 50) {radius = radius - 1 ;}
-rewrite (radius);
-}
-function bigger() {
-if (radius < 150) {radius = radius + 1 ;}
-rewrite (radius);
-}
-
-function result() {
-small.style.display = "none";
-large.style.display = "none";
-done.style.display = "none";
-restart.style.display = "block";
-score.style.display = "block";
-gotwitter.style.display = "block";
-resultstr = String(radius);
-if (radius == 100) {
-resulttext = "おめでとう！これは日本の国旗です！";
-}
-else if (radius < 110){
-if (radius >90){
-resulttext = "惜しい！日の丸の" + resultstr + "%の大きさです！";
-}
-resulttext = "残念。日の丸の" + resultstr + "%の大きさです。";
-}
-else {
-resulttext = "残念。日の丸の" + resultstr + "%の大きさです。";
-}
-document.getElementById("score").innerHTML = resulttext;
-}
-
-function retry() {
-small.style.display = "block";
-large.style.display = "block";
-done.style.display = "block";
-score.style.display = "none";
-restart.style.display = "none";
-gotwitter.style.display = "none";
-radius = Math.floor( Math.random() * 101 ) + 50;
-rewrite (radius);
-}
-
-function openTwitter() {
- var url;
- var tweet = "https://twitter.com/intent/tweet?text="+resulttext+"&url="+url+"&hashtags=日本の国旗ゲーム！";
- window.open(tweet,'_blank');
-}
-
-<!-- <script src="hinomarugame.js"> --> </script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script src="hinomarugame.js"> </script>
 </body>
 </html>
